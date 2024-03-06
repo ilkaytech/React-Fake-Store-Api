@@ -1,3 +1,14 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import ProductDetails from "./pages/ProductDetails";
+
 export default function App() {
-  return <h1 className="text-3xl text-amber-600 ">App</h1>;
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/ProductDetails" element={<ProductDetails />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
