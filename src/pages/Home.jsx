@@ -14,9 +14,9 @@ export default function Home() {
 
   return (
     <div>
-      <section className="py-16 px-36">
+      <section className="py-16 md:px-36 sm:px-0">
         <div className="container mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-7 max-w-sm mx-auto md:max-w-none md:mx-0 ">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-7 max-w-sm mx-auto md:max-w-none md:mx-0 sm:mx-0 ">
             {filteredProducts.map((product) => {
               return <Product product={product} key={product.id} />;
             })}

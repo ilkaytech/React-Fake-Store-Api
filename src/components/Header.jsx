@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { Button, Navbar, TextInput } from "flowbite-react";
 import { Link } from "react-router-dom";
 import { AiOutlineSearch } from "react-icons/ai";
@@ -7,8 +8,29 @@ import { CiUser } from "react-icons/ci";
 import { TfiWorld } from "react-icons/tfi";
 
 export default function Header() {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.pageYOffset;
+      setIsScrolled(scrollTop > 0); // Scroll değeri 0'dan büyükse, sayfa kaydırılmıştır.
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <Navbar className="border-b-2 ">
+    <Navbar
+      className={`border-b-2 ${
+        isScrolled
+          ? "fixed top-0 left-0 w-full z-10 shadow-md transition-all duration-500"
+          : ""
+      }`}
+    >
       <Link to="/">
         <img
           className="w-44 "
